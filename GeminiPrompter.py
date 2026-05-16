@@ -1,5 +1,7 @@
 # Libraries
 from google import genai
+from dotenv import load_dotenv
+import os
 
 # Class
 class Prompter:
@@ -14,7 +16,8 @@ class Prompter:
         :param self: Description
         """
 
-        self.client = genai.Client()
+        load_dotenv()
+        self.client = genai.Client(api_key=os.getenv("Gemini_API_Key"))
         self.GEMINI_MODEL = "gemini-3-flash-preview"
     
     def prompt(self, prompt: str):
